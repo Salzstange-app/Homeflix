@@ -1,0 +1,42 @@
+---
+
+- name: Container Update
+  ansible.builtin.debug:
+    msg:
+      - "welcome to the Galaxy Updater"
+
+- name: Stop docker compose stack
+  become: true
+  become_user: root
+  ansible.builtin.command:
+    cmd: docker compose down
+  
+- name: Upgrade the OS 
+  ansible.builtin.apt:
+    upgrade: dist
+
+- name: Update the OS
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Update all packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+
+- name: Remove useless packages from the cache
+  ansible.builtin.apt:
+    autoclean: yes
+
+- name: Clean local repos
+  ansible.builtin.apt:
+    clean: yes
+
+- name: start Docker compose file
+  become: true
+  become_user: root
+  ansible.builtin.command:
+    cmd: docker compose up -d
+
+
+  

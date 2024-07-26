@@ -1,0 +1,81 @@
+version: "3.1"
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - ./sonarr/data:/config
+      - ./sonarr/tvseries:/tv #optional
+      - ./sonarr/downloadclient-downloads:/downloads #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    ports:
+      - 7878:7878
+    volumes:
+      - ./radarr/data:/config
+      - ./radarr/movies:/movies
+      - ./radarr/downloadclient-downloads:/downloads
+    restart: unless-stopped
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - ./sabnzbd/config:/config
+      - ./sabnzbd/downloadclient-downloads:/downloads #optional
+      - ./sabnzbd/incomplete/downloads:/incomplete-downloads #optional
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+  
+#  plex:
+#    image: lscr.io/linuxserver/plex:latest
+#    container_name: plex
+#    ports:
+#      -  8181:8181
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=Europe/Berlin
+#      - VERSION=docker
+#    volumes:
+#      - ./config:/config
+#      - ./sonarr/tvseries:/tv
+#      - ./radarr/movies:/movies
+#    restart: unless-stopped
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - ./jellyfin/config:/config
+      - ./sonarr/tvseries:/data/tvshows
+      - ./radarr/movies:/data/movies
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+
+networks:
+  media:
+    driver: bridge
