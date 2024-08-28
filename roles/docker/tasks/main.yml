@@ -1,0 +1,22 @@
+---
+
+
+- name: Docker Installer
+  ansible.builtin.debug:
+    msg:
+      - "ye"
+
+
+- name: Update all packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+
+
+- name: Start Docker Installation
+  become: true
+  become_user: root
+  ansible.builtin.command:
+    chdir: /home/jaunger/projects/Docker/HomeNetflix/roles/docker/files
+    cmd: bash docker.sh
+
