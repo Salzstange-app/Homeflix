@@ -17,6 +17,6 @@
   become: true
   become_user: root
   ansible.builtin.command:
-    chdir: /home/jaunger/projects/Docker/HomeNetflix/roles/docker/files
+    chdir: /HomeNetflix/roles/docker/files
     cmd: bash docker.sh
 
