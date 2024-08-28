@@ -1,6 +1,9 @@
 ---
 
 
-- name: Netflix Free 
+- name: Netflix Free
+  hosts:
+  - localhost
   roles:
-    - role: update 
+    - role: docker 
+    - role: update

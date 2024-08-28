@@ -3,7 +3,7 @@
 - name: Container Update
   ansible.builtin.debug:
     msg:
-      - "welcome to the Galaxy Updater"
+      - "container updater"
 
 - name: Stop docker compose stack
   become: true
@@ -36,7 +36,7 @@
   become: true
   become_user: root
   ansible.builtin.command:
-    cmd: docker compose up -d
+    cmd: sudo docker compose up -d
 
 
   

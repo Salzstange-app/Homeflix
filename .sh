@@ -28,7 +28,7 @@ loading_screen() {
 }
 
 # Ansible-Playbook ausführen und Ladebildschirm anzeigen
-ansible-playbook -i "$HOSTS," $PLAYBOOK &
+sudo ansible-playbook $PLAYBOOK &
 
 # Zeige den Ladebildschirm an, während das Playbook ausgeführt wird
 loading_screen

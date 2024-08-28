@@ -1,0 +1,16 @@
+---
+
+
+- name: Docker Installer
+  ansible.builtin.debug:
+    msg:
+      - "ye"
+
+
+- name: Update all packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+
+
+    
