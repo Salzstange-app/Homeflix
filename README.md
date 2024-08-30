@@ -1,11 +1,16 @@
 
 # Homeflix
 
-U need something to get nzb files and something like Usenet
-
-Its only work for Linux
+Homeflix is a Jellyfin-Server thats on Docker localy runs. 
 
 
+
+
+## Overview
+
+    1. U need any Linux distrubation on Windows it doesent work for now.
+    2. U need something to get NZB Movie/TV-Shows files.
+    3. U need Usenet 
 
 
 ## Run Locally
