@@ -25,18 +25,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4 
       
-      - name: Create annotation for build error
-        run: echo "test"
+      - name: Test
+        run: echo "Helo World"
 
       - name: install packages
         run: |
           sudo apt install git
           sudo apt install ansible
 
-      - name: get repo
+      - name: get Repo
         run: |
           git clone https://github.com/Salzstange-app/Homeflix.git
-          echo pwd
 
       - name: start bash script
         run: bash .sh
