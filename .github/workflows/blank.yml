@@ -28,10 +28,17 @@ jobs:
       - name: Create annotation for build error
         run: echo "test"
 
-      - name: install git
-        run: sudo apt install git
+      - name: install packages
+        run: |
+          sudo apt install git
+          sudo apt install ansible
 
       - name: get repo
-        run: git clone https://github.com/Salzstange-app/Homeflix.git
-        
+        run: |
+          git clone https://github.com/Salzstange-app/Homeflix.git
+          echo pwd
+
+      - name: start bash script
+        run: bash .sh
+    
 
