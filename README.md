@@ -3,6 +3,8 @@
 
 Homeflix is a Jellyfin-Server thats on Docker localy runs. 
 
+[![Testing](https://github.com/Salzstange-app/GitHubApi/actions/workflows/CI.yml/badge.svg)](https://github.com/Salzstange-app/GitHubApi/actions/workflows/CI.yml)
+
 
 
 
