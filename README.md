@@ -46,10 +46,6 @@ Install dependencies
 - [@Jan](https://www.github.com/Salzstange-app)
 
 
-## 🚀 About Me
-I'm a full stack developer...
-
-
 ## Support
 
 For support, [Website](https://salzstange-app.github.io/website/) or join my [Discord channel](https://discord.gg/qVzbUXGNpW).
