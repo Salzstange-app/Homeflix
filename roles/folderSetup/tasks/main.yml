@@ -7,7 +7,7 @@
   - name: Switch to the Homeflix directory
     ansible.built.in.command:
       cmd: cd {{ pwd_output | dirname }}/Homeflix
-
+  
   - name: Change the folder permission of the Movie/Shows folder
     become: true
     become_user: root
