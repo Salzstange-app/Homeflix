@@ -13,10 +13,10 @@
     state: latest
 
 
-- name: Start Docker Installation
-  become: true
-  become_user: root
-  ansible.builtin.command:
-    chdir: /HomeNetflix/roles/docker/files
-    cmd: bash docker.sh
+#- name: Start Docker Installation
+#  become: true
+#  become_user: root
+#  ansible.builtin.command:
+#    chdir: /HomeNetflix/roles/docker/files
+#    cmd: bash docker.sh
 
