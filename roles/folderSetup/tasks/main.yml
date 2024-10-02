@@ -1,17 +1,17 @@
 ---
-  - name: Get the curent directory
-    ansible.built.in.command:
-      cmd: pwd
-      register:pwd_output
+- name: Get the curent directory
+  ansible.built.in.command:
+    cmd: pwd
+    register:pwd_output
 
-  - name: Switch to the Homeflix directory
-    ansible.built.in.command:
-      cmd: cd {{ pwd_output | dirname }}/Homeflix
+- name: Switch to the Homeflix directory
+  ansible.built.in.command:
+    cmd: cd {{ pwd_output | dirname }}/Homeflix
   
-  - name: Change the folder permission of the Movie/Shows folder
-    become: true
-    become_user: root
-    ansible.built.in.command:
-      cmd: |
-      sudo chmod 777 radarr/movies
-      sudo chmod 777 sonarr/tvseries
+- name: Change the folder permission of the Movie/Shows folder
+  become: true
+  become_user: root
+  ansible.built.in.command:
+    cmd: |
+    sudo chmod 777 radarr/movies
+    sudo chmod 777 sonarr/tvseries
