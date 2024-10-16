@@ -1,38 +1,31 @@
 #!/bin/bash
 
-# Pfade zu Ansible-Inventar und Playbook
-HOSTS="localhost"
-PLAYBOOK="galaxy.yaml"
+# Farben definieren
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # Keine Farbe
 
-# Überprüfe, ob Ansible installiert ist
-if ! command -v ansible-playbook &> /dev/null
-then
-    echo "Ansible ist nicht installiert. Bitte installiere Ansible, um fortzufahren."
-    exit 1
-fi
+# Installiere Python mit Pipx
+echo -e "${BLUE}Installing Python3, Pip3, and Pipx...${NC}"
+sudo apt install -y python3 python3-pip pipx
 
-# Ladebildschirm-Funktion
-loading_screen() {
-    local pid=$!
-    local delay=0.1
-    local spinstr='|/-\'
-    echo -n "Laden "
-    while ps -p $pid > /dev/null 2>&1; do
-        for i in $(seq 0 3); do
-            printf "\b${spinstr:i:1}"
-            sleep $delay
-        done
-    done
-    printf "\b" # Rückwärts löschen
-    echo "Fertig!"
-}
+# Versionen abrufen
+python3Version=$(python3 --version)
+pip3Version=$(pip3 --version)
+pipxVersion=$(pipx --version)
 
-# Ansible-Playbook ausführen und Ladebildschirm anzeigen
-sudo ansible-playbook $PLAYBOOK &
+# Installiere Ansible
+echo -e "${BLUE}Installing Ansible via Pipx...${NC}"
+sudo pipx install --include-deps ansible
 
-# Zeige den Ladebildschirm an, während das Playbook ausgeführt wird
-loading_screen
-
-# Warte, bis das Playbook abgeschlossen ist
-wait $!
-echo "Ansible Playbook abgeschlossen!"
+# Ausgabe
+echo -e "${GREEN}"
+echo "==========================================================="
+echo -e "${YELLOW}Installation Complete:${NC}"
+echo -e "Python3 Version: ${GREEN}$python3Version${NC}"
+echo -e "Pip3 Version: ${GREEN}$pip3Version${NC}"
+echo -e "Pipx Version: ${GREEN}$pipxVersion${NC}"
+echo "==========================================================="
+echo -e "${NC}" # Zurück zu normalem Text
