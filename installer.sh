@@ -9,6 +9,13 @@ if ! command -v ansible-playbook &> /dev/null
 then
     sudo bash .sh
     sudo ansible-playbook $PLAYBOOK &
+
+    # Zeige den Ladebildschirm an, während das Playbook ausgeführt wird
+    loading_screen
+
+    # Warte, bis das Playbook abgeschlossen ist
+    wait $!
+    echo "Ansible Playbook abgeschlossen!"
 fi
 
 # Ladebildschirm-Funktion
