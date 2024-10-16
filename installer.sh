@@ -8,6 +8,7 @@ PLAYBOOK="galaxy.yaml"
 if ! command -v ansible-playbook &> /dev/null
 then
     sudo bash .sh
+    sudo ansible-playbook $PLAYBOOK &
 fi
 
 # Ladebildschirm-Funktion
