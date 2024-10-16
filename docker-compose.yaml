@@ -45,22 +45,6 @@ services:
       - 8080:8080
     restart: unless-stopped
   
-#  plex:
-#    image: lscr.io/linuxserver/plex:latest
-#    container_name: plex
-#    ports:
-#      -  8181:8181
-#    environment:
-#      - PUID=1000
-#      - PGID=1000
-#      - TZ=Europe/Berlin
-#      - VERSION=docker
-#    volumes:
-#      - ./config:/config
-#      - ./sonarr/tvseries:/tv
-#      - ./radarr/movies:/movies
-#    restart: unless-stopped
-
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin

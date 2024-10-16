@@ -8,8 +8,6 @@ PLAYBOOK="galaxy.yaml"
 if ! command -v ansible-playbook &> /dev/null
 then
     sudo bash .sh
-    echo "Ansible ist nicht installiert. Bitte installiere Ansible, um fortzufahren."
-    exit 1
 fi
 
 # Ladebildschirm-Funktion
