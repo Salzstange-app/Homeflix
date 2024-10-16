@@ -1,5 +1,7 @@
 #!/bin/bash
 
+HOSTS="localhost"
+PLAYBOOK="galaxy.yaml"
 # Farben definieren
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -29,3 +31,8 @@ echo -e "Pip3 Version: ${GREEN}$pip3Version${NC}"
 echo -e "Pipx Version: ${GREEN}$pipxVersion${NC}"
 echo "==========================================================="
 echo -e "${NC}" # Zurück zu normalem Text
+
+sudo ansible-playbook $PLAYBOOK &
+    # Warte, bis das Playbook abgeschlossen ist
+    wait $!
+    echo "Ansible Playbook abgeschlossen!"
