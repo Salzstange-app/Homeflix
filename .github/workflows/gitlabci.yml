@@ -46,3 +46,19 @@ jobs:
 
       - name: Start Bash Script
         run: bash .sh
+
+      - name: Check Sonarr
+        run: |
+          curl --fail http://localhost:8989/api/v1/system/status
+
+      - name: Check Radarr
+        run: |
+          curl --fail http://localhost:7878/api/v1/system/status
+
+      - name: Check Sabnzbd
+        run: |
+          curl --fail http://localhost:8080/api/v2/sabnzbd/pause
+
+      - name: Check Jellyfin
+        run: |
+          curl --fail http://localhost:8096/Users
