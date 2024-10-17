@@ -37,7 +37,12 @@ jobs:
         run: |
           git clone https://github.com/Salzstange-app/Homeflix.git
 
-      - name: start bash script
-        run: bash .sh
-    
+     
+  tests:
+    runs-on: ubuntu-latest   
 
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start Bash Script
+        run: bash /Pfad/zu/deinem/bash_script.sh   
