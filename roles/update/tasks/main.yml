@@ -24,13 +24,13 @@
 #    name: "*"
 #    state: latest
 
-- name: Remove useless packages from the cache
-  ansible.builtin.apt:
-    autoclean: yes
+#- name: Remove useless packages from the cache
+#  ansible.builtin.apt:
+#    autoclean: yes
 
-- name: Clean local repos
-  ansible.builtin.apt:
-    clean: yes
+#- name: Clean local repos
+#  ansible.builtin.apt:
+#    clean: yes
 
 - name: start Docker compose file
   become: true
