@@ -6,13 +6,6 @@
     msg:
       - "Runs the Docker installer"
 
-
-- name: Update all packages to their latest version
-  ansible.builtin.apt:
-    name: "*"
-    state: latest
-
-
 - name: Get the current directory
   ansible.builtin.command:
     cmd: pwd
