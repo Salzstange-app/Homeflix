@@ -13,10 +13,19 @@
     state: latest
 
 
-#- name: Start Docker Installation
-#  become: true
-#  become_user: root
-#  ansible.builtin.command:
-#    chdir: /HomeNetflix/roles/docker/files
-#    cmd: bash docker.sh
+- name: Get the current directory
+  ansible.builtin.command:
+    cmd: pwd
+  register: pwd_output
 
+- name: Change to the Homeflix directory
+  ansible.builtin.command:
+    cmd: "echo 'changed directory'"
+  args:
+    chdir: "{{ pwd_output.stdout | dirname }}/Homeflix" 
+
+- name: Start Docker Installation
+  become: true
+  become_user: root
+  ansible.builtin.command:
+    cmd: bash roles/docker/files/docker.sh
